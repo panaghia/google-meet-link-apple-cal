@@ -9,3 +9,4 @@ How to:
 - Go to https://script.google.com/home
 - New Project
 - Copy/Paste code and run
+- Create a Trigger -> `From calendar` - `Calendar updated` [Doc](https://developers.google.com/apps-script/guides/triggers/installable#managing_triggers_manually)
