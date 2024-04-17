@@ -8,5 +8,6 @@ How to:
 
 - Go to https://script.google.com/home
 - New Project
+- Add Calendar API under "Services"
 - Copy/Paste code and run
-- Create a Trigger -> `From calendar` - `Calendar updated` [Doc](https://developers.google.com/apps-script/guides/triggers/installable#managing_triggers_manually)
+- Create a Trigger to programmatically run the script -> `From calendar` - `Calendar updated` [Doc](https://developers.google.com/apps-script/guides/triggers/installable#managing_triggers_manually)
