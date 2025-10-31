@@ -8,7 +8,7 @@ Here’s how:
 
 1. Go to https://script.google.com/home
 2. New Project
-3. Add Calendar API under "Services"
+3. Under "Services", add "Google Calendar API"
 4. Copy/Paste code and run
 4. Add a Trigger of type “Calendar” (more below)
 
@@ -22,7 +22,7 @@ Configure the trigger with these settings:
 - Choose which function to run: Select the function (checkForNewEvents)
 - Choose which deployment should run: Head
 - Events: Choose "From calendar"
-- Which event: Choose "On event update"
+- Which event: Choose "On event update" or "Calendar updated"
 - Calendar to watch: Select the specific calendar you want to monitor for updates
 - Failure notification settings: (Optional) Configure how you want to be notified if the script fails
 Click "Save"
