@@ -8,7 +8,7 @@
 function checkForNewEvents() {
   const calendarId = 'primary';
   const now = new Date();
-  const minutesFromLastUpdate = 5;
+  const minutesFromLastUpdate = 20;
   const updatedMin = new Date(now.getTime() - minutesFromLastUpdate * 60000);
   const events = Calendar.Events.list(calendarId, {
     timeMin: now.toISOString(),
@@ -21,12 +21,15 @@ function checkForNewEvents() {
   if (events.items && events.items.length > 0) {
     for (let i = 0; i < events.items.length; i++) {
       let event = events.items[i];
-      if (event.status !== 'cancelled' && !event.start.date) {
+      if (event.status !== 'cancelled' && event.start.date !== null) {
         const start = new Date(event.start.dateTime);
+        let a =event.creator.self;
+        let b = event.getConferenceData();
+        let c = event.getAttendees();
         if (
           event.creator.self &&
-          event.conferenceData == null &&
-          event.attendees
+          event.getConferenceData() == null &&
+          event.getAttendees().length >0
         ) {
           event.conferenceData = {
             createRequest: {
