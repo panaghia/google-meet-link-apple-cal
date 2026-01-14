@@ -23,6 +23,11 @@ Configure the trigger with these settings:
 - Choose which deployment should run: Head
 - Events: Choose "From calendar"
 - Which event: Choose "On event update" or "Calendar updated"
-- Calendar to watch: Select the specific calendar you want to monitor for updates
+- Calendar to watch: Select the specific calendar you want to monitor for updates (your email address)
 - Failure notification settings: (Optional) Configure how you want to be notified if the script fails
 Click "Save"
+
+## Share script with other users
+1. Copy the full project link : https://script.google.com/home/projects/someLongProjectIdUniqueString
+2. Share it with someone in the same organisation -> the click and you should get an access request -> Viewer is enough
+3. When Viewer access is granted, the coworker can schedule it the same way as described above
