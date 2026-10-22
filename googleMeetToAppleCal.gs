@@ -2,8 +2,16 @@
  * This script adds Google Meet to events created via Apple Calendar (and other 3rd party calendar clients)
  * It fetches events recently updated filtering via updatedMin.
  * Adds Google Meet link if an event has been created by you, has no conferenceData and has at least one guest
+ * Skips events that already have a video call link (Meet, Zoom, Teams, …) in their location or description
  * Creates a trigger on event update
  */
+
+const meetingLinkPattern =
+  /https?:\/\/([\w-]+\.)*(meet\.google\.com|zoom\.us|zoomgov\.com|teams\.microsoft\.com|teams\.live\.com|webex\.com|whereby\.com|gotomeeting\.com|meet\.goto\.com|chime\.aws|meet\.jit\.si|around\.co|bluejeans\.com)\b/i;
+
+function hasMeetingLink(event) {
+  return meetingLinkPattern.test(event.location || '') || meetingLinkPattern.test(event.description || '');
+}
 
 function checkForNewEvents() {
   const calendarId = 'primary';
@@ -26,7 +34,8 @@ function checkForNewEvents() {
         if (
           event.creator.self &&
           event.conferenceData == null &&
-          event.attendees
+          event.attendees &&
+          !hasMeetingLink(event)
         ) {
           event.conferenceData = {
             createRequest: {
